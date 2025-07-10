@@ -1,12 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html,
 body {
   font-family: "Poppins", sans-serif;
   background-color: #f4f4f4;
@@ -18,37 +17,43 @@ body {
   padding: 20px;
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
 .wrapper h1 {
-  margin: 20px auto;
   text-align: center;
   font-size: 40px;
   color: #333;
+  margin-bottom: 30px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .card {
-  flex: 1 1 calc(33.33% - 20px); 
-  overflow: hidden;
-  height: auto;
+  flex: 1 1 calc(33.33% - 20px);
+  aspect-ratio: 4 / 3;
   border-radius: 10px;
+  overflow: hidden;
   position: relative;
-  transition: 0.5s;
+  transition: transform 0.4s ease, filter 0.3s ease;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .card img {
   width: 100%;
   height: 100%;
-  filter: grayscale(100%);
   object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.card img[src] {
+  opacity: 1;
 }
 
 .card:hover {
@@ -57,21 +62,21 @@ body {
 }
 
 .card:hover img {
-  filter: grayscale(0);
+  filter: grayscale(0%);
 }
 
 .card figcaption {
   position: absolute;
   bottom: 0;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), transparent);
-  color: #fff;
+  width: 100%;
   padding: 15px;
   text-align: center;
   font-weight: 700;
   font-size: 18px;
+  color: #fff;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), transparent);
   opacity: 0;
-  width: 100%;
-  transition: 0.5s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 
 .card:hover figcaption {
@@ -80,16 +85,15 @@ body {
   transform: translateY(50%);
 }
 
-
 @media (max-width: 1024px) {
   .card {
-    flex: 1 1 calc(48% - 20px); 
+    flex: 1 1 calc(48% - 20px);
   }
 }
 
 @media (max-width: 600px) {
   .card {
-    flex: 1 1 100%; 
+    flex: 1 1 100%;
   }
 
   .wrapper h1 {
